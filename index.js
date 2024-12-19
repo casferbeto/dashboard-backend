@@ -5,7 +5,7 @@ const cors = require('cors');
 const multer = require('multer');
 const fs = require('fs');
 const csv = require('csv-parser');
-const bcrypt = require('bcrypt'); // Para encriptar contraseñas en el futuro
+const bcrypt = require('bcryptjs'); // Para encriptar contraseñas en el futuro
 const jwt = require('jsonwebtoken'); // Para generar tokens de sesión
 require('dotenv').config();
 
