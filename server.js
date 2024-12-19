@@ -17,6 +17,10 @@ const PORT = 5001;
 app.use(cors());
 app.use(bodyParser.json());
 
+app.get('/', (req, res) => {
+	res.send('Backend is working!');
+});
+
 console.log('Conexión DB:', {
 	host: process.env.DB_HOST,
 	user: process.env.DB_USER,
