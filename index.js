@@ -30,12 +30,15 @@ console.log('Conexión DB:', {
 });
 
 // Configuración de la base de datos usando .env
-const db = mysql.createConnection({
+const db = mysql.createPool({
 	host: process.env.DB_HOST,
 	user: process.env.DB_USER,
 	password: process.env.DB_PASSWORD,
 	database: process.env.DB_NAME,
 	port: process.env.DB_PORT,
+	waitForConnections: true,
+	connectionLimit: 10, // Número máximo de conexiones en el pool
+	queueLimit: 0, // Sin límite para la cola de solicitudes
 });
 
 // Conexión a la base de datos
