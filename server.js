@@ -7,6 +7,7 @@ const fs = require('fs');
 const csv = require('csv-parser');
 const bcrypt = require('bcrypt'); // Para encriptar contraseñas en el futuro
 const jwt = require('jsonwebtoken'); // Para generar tokens de sesión
+require('dotenv').config();
 
 // Crear una instancia de Express
 const app = express();
@@ -16,12 +17,21 @@ const PORT = 5001;
 app.use(cors());
 app.use(bodyParser.json());
 
-// Configuración de la base de datos
+console.log('Conexión DB:', {
+	host: process.env.DB_HOST,
+	user: process.env.DB_USER,
+	password: process.env.DB_PASSWORD,
+	database: process.env.DB_NAME,
+	port: process.env.DB_PORT,
+});
+
+// Configuración de la base de datos usando .env
 const db = mysql.createConnection({
-	host: 'localhost',
-	user: 'root',
-	password: 'beto2024', // Reemplaza con tu contraseña real
-	database: 'dashboard',
+	host: process.env.DB_HOST,
+	user: process.env.DB_USER,
+	password: process.env.DB_PASSWORD,
+	database: process.env.DB_NAME,
+	port: process.env.DB_PORT,
 });
 
 // Conexión a la base de datos
